@@ -96,9 +96,11 @@ steps away from a record beat the algebraic construction by a wide margin.
 
 ## Negative results (so nobody has to repeat them)
 
-* **Local search never improved a continuation step.** We tried 40 s to 20 min of GPU tabu search (160 parallel
-  walks), CPU self-avoiding walks and unrestricted (non-skew) walks. None ever got a continued sequence below the
-  energy it started with. These sequences are already deep local minima.
+* **Short local search never improved a continuation step.** We tried GPU tabu search (160 parallel walks, 40 s
+  per length, at every length of two chains: 483→517 and 573→607), CPU skew-symmetric self-avoiding walks (20 s)
+  and unrestricted (non-skew) walks (30 s). None ever got a continued sequence below the energy it started with.
+  Longer seeded runs (20 min) were started but lost when the Colab runtime was recycled, so this result covers
+  short budgets only.
 * **Beam search did not help.** A beam of width 128 over all insertion and deletion paths (40 records × 60 steps)
   matched the greedy chain at every length.
 * **Continuation decays.** F drops by about 0.1–0.25 per +2 in length. The middle of the gap (537–566) and lengths
